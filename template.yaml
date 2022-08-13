@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  express-sample
+
+  Sample SAM Template for express-sample
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ExpressSampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+    Metadata:
+      DockerTag: nodejs16.x-v1
+      DockerContext: ./
+      Dockerfile: Dockerfile
+
+Outputs:
+  ExpressSampleApi:
+    Description: "API Gateway endpoint URL for Prod stage for Express Sample function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/express-sample/"
