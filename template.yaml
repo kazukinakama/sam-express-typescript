@@ -30,4 +30,4 @@ Resources:
 Outputs:
   ExpressSampleApi:
     Description: "API Gateway endpoint URL for Prod stage for Express Sample function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/express-sample/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
