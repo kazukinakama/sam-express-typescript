@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "express-sample"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-vc2qi8pn42cg"
+s3_prefix = "express-sample"
+region = "ap-northeast-1"
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["ExpressSampleFunction=142144853887.dkr.ecr.ap-northeast-1.amazonaws.com/expresssample5e036526/expresssamplefunctiona0d614efrepo"]
