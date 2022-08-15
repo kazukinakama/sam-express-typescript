@@ -30,10 +30,15 @@ sam deploy --guided
 sam deploy
 ```
 
-## Run the API locally on port 3000.
+## Run the API locally on port 3000
 ```
 sam local start-api
 curl http://localhost:3000/
+```
+
+## Test
+```
+yarn run test
 ```
 
 ## Cleanup
