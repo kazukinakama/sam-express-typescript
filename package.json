@@ -7,7 +7,13 @@
     "tsc": "tsc",
     "ts-node": "ts-node -r tsconfig-paths/register ./src/local.ts",
     "build": "esbuild lambda.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=lambda.js",
-    "start:local": "NODE_ENV=local nodemon"
+    "start:local": "NODE_ENV=local nodemon",
+    "eslint": "eslint './src/**/*.{ts,tsx}'",
+    "eslint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "format": "prettier --check ./src",
+    "format:fix": "prettier --write ./src",
+    "lint": "npm-run-all eslint format",
+    "lint:fix": "npm-run-all eslint:fix format:fix"
   },
   "dependencies": {
     "@vendia/serverless-express": "^4.10.1",
@@ -17,10 +23,17 @@
     "@types/aws-lambda": "^8.10.102",
     "@types/express": "^4.17.13",
     "@types/node": "^18.6.5",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
     "esbuild": "^0.15.2",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "yarn-run-all": "^3.1.1"
   }
 }
