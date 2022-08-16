@@ -7,7 +7,7 @@ env:
   AWS_REGION: ap-northeast-1
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -30,6 +30,7 @@ jobs:
 
   deploy:
     if: github.ref == 'refs/heads/main'
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
