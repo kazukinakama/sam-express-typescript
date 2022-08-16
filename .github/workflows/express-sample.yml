@@ -3,6 +3,9 @@ name: express-sample CI
 on:
   push
 
+env:
+  AWS_REGION: ap-northeast-1
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,3 +27,31 @@ jobs:
 
       - name: Run Test
         run: yarn test
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup AWS SAM
+        uses: aws-actions/setup-sam@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Run Build
+        run: sam build --use-container
+
+      - name: Run Deploy
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
