@@ -20,13 +20,13 @@ jobs:
           node-version: 16.x
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       - name: Run Linter
-        run: yarn lint
+        run: npm run lint
 
       - name: Run Test
-        run: yarn test
+        run: npm run test
 
   deploy:
     if: github.ref == 'refs/heads/main'

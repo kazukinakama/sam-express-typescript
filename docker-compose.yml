@@ -19,7 +19,7 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    command: sh -c "yarn && yarn start:local"
+    command: sh -c "npm i && npm run start:local"
 
   mysql:
     image: mysql:8.0.23

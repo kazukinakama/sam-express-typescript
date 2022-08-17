@@ -38,7 +38,7 @@ curl http://localhost:3000/
 
 ## Test
 ```
-yarn run test
+npm run test
 ```
 
 ## Cleanup

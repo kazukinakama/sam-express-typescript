@@ -1,9 +1,8 @@
 FROM public.ecr.aws/lambda/nodejs:16-x86_64
 
-COPY ./src package.json yarn.lock ./
+COPY ./src package*.json ./
 
-RUN npm install
-RUN npm install --location=global yarn
-RUN yarn run build
+RUN npm ci
+RUN npm run build
 
 CMD ["lambda.handler"]
